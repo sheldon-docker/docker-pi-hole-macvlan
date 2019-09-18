@@ -7,10 +7,25 @@ services:
     environment:
       TZ:
       WEBPASSWORD:
-      ServerIP: ${IP_ADDRESS}
+      DNS1:
+      DNS2:
+      DNSSEC:
+      DNS_BOGUS_PRIV:
+      CONDITIONAL_FORWARDING:
+      CONDITIONAL_FORWARDING_IP:
+      CONDITIONAL_FORWARDING_DOMAIN:
+      CONDITIONAL_FORWARDING_REVERSE:
+      ServerIP:
+      ServerIPv6:
+      VIRTUAL_HOST:
+      IPv6:
+      INTERFACE:
+      DNSMASQ_LISTENING:
+      WEB_PORT:
+      DNSMASQ_USER:
     networks:
       vlan:
-        ipv4_address: ${IP_ADDRESS}
+        ipv4_address: ${ServerIP}
     volumes:
        - 'pihole/:/etc/pihole/'
        - 'dnsmasq/:/etc/dnsmasq.d/'
@@ -18,7 +33,7 @@ services:
     # - './var-log/pihole.log:/var/log/pihole.log'
     dns:
       - 127.0.0.1
-      - ${DNS_SERVER}
+      - ${DNS1}
     cap_add:
       - NET_ADMIN
     restart: always
