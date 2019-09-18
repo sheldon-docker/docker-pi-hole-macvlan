@@ -4,19 +4,20 @@ services:
   pihole:
     container_name: pihole
     image: pihole/pihole:latest
-    networks:
-      - vlan
     environment:
       - TZ
       - WEBPASSWORD
+    networks:
+      vlan:
+        ipv4_address: ${IP_ADDRESS}
     volumes:
        - 'pihole/:/etc/pihole/'
        - 'dnsmasq/:/etc/dnsmasq.d/'
     # run `touch ./var-log/pihole.log` first unless you like errors
     # - './var-log/pihole.log:/var/log/pihole.log'
     dns:
-      - ${DNS_SERVER_1}
-      - ${DNS_SERVER_2}
+      - 127.0.0.1
+      - ${DNS_SERVER}
     cap_add:
       - NET_ADMIN
     restart: always
@@ -33,4 +34,3 @@ networks:
     ipam:
       config:
         - subnet: ${SUBNET}
-        - ip_range: ${IP_RANGE}
