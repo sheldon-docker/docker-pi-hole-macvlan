@@ -8,7 +8,7 @@ services:
       TZ:
       WEBPASSWORD: ${WEBPASSWORD}
       DNS1: ${DNS1}
-      DNS2: {DNS2:-no}
+      DNS2: ${DNS2:-no}
       DNSSEC:
       DNS_BOGUS_PRIV:
       CONDITIONAL_FORWARDING:
