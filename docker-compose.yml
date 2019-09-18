@@ -5,8 +5,9 @@ services:
     container_name: pihole
     image: pihole/pihole:latest
     environment:
-      - TZ
-      - WEBPASSWORD
+      TZ:
+      WEBPASSWORD:
+      ServerIP: ${IP_ADDRESS}
     networks:
       vlan:
         ipv4_address: ${IP_ADDRESS}
