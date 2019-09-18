@@ -6,23 +6,23 @@ services:
     image: pihole/pihole:latest
     environment:
       TZ:
-      WEBPASSWORD:
-      DNS1:
-      DNS2:
+      WEBPASSWORD: ${WEBPASSWORD}
+      DNS1: ${DNS1}
+      DNS2: {DNS2:-no}
       DNSSEC:
       DNS_BOGUS_PRIV:
       CONDITIONAL_FORWARDING:
       CONDITIONAL_FORWARDING_IP:
       CONDITIONAL_FORWARDING_DOMAIN:
       CONDITIONAL_FORWARDING_REVERSE:
-      ServerIP:
+      ServerIP: ${ServerIP}
       ServerIPv6:
       VIRTUAL_HOST:
-      IPv6:
+      IPv6: ${IPv6:-True}
       INTERFACE:
       DNSMASQ_LISTENING:
       WEB_PORT:
-      DNSMASQ_USER:
+      DNSMASQ_USER: ${DNSMASQ_USER:-root}
     networks:
       vlan:
         ipv4_address: ${ServerIP}
